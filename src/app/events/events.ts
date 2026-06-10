@@ -1,10 +1,31 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
+import { EventsService } from '../services/events.service';
+import { Event } from '../models/event.model';
 
 @Component({
   selector: 'app-events',
   standalone: false,
   templateUrl: './events.html',
-  styleUrl: './events.css',
+  styleUrls: ['./events.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EventsComponent {}
+export class EventsComponent implements OnInit {
+  private eventsService = inject(EventsService);
+  events = signal<Event[]>([]);
+  loading = signal(true);
+  error = signal<string | null>(null);
+
+  ngOnInit() {
+    this.eventsService.getEvents().subscribe({
+      next: (events) => {
+        this.events.set(events.sort((a, b) => a.date.getTime() - b.date.getTime()));
+        this.loading.set(false);
+      },
+      error: (err) => {
+        console.error('Error fetching events:', err);
+        this.error.set('Failed to load events. Please try again later.');
+        this.loading.set(false);
+      }
+    });
+  }
+}
