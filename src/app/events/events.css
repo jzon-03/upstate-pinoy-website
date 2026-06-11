@@ -175,6 +175,29 @@
   font-weight: 600;
 }
 
+/* Event Website Link */
+.event-website {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e9ecef;
+}
+
+.website-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.website-link:hover {
+  color: #764ba2;
+  text-decoration: underline;
+}
+
 /* CTA Section */
 .events-cta {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);

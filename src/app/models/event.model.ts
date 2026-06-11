@@ -9,4 +9,5 @@ export interface Event {
   month?: string;
   day?: string;
   expirationDate?: Date | any;
+  website?: string;
 }

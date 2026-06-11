@@ -49,6 +49,13 @@
                 }
               </div>
             }
+            @if (event.website) {
+              <div class="event-website">
+                <a [href]="event.website" target="_blank" rel="noopener noreferrer" class="website-link">
+                  🌐 Event Website
+                </a>
+              </div>
+            }
           </div>
         </article>
       } @empty {
