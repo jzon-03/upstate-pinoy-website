@@ -8,4 +8,5 @@ export interface Event {
   tags?: string[];
   month?: string;
   day?: string;
+  expirationDate?: Date | any;
 }

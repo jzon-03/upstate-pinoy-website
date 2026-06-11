@@ -1,4 +1,131 @@
-<div class="contact-container">
-  <h1>Contact Us</h1>
-  <p>Get in touch with the Upstate Pinoy community.</p>
+<div class="contact-page">
+  <section class="contact-header">
+    <h1>Get in Touch</h1>
+    <p>Connect with the Upstate Pinoy community - we'd love to hear from you!</p>
+  </section>
+
+  <section class="contact-content">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Connect With Us</h2>
+        <p>Whether you have questions, want to share an event, or just want to say hello, we're here for you.</p>
+        
+        <div class="info-cards">
+          <div class="info-card">
+            <div class="info-icon">📧</div>
+            <div class="info-content">
+              <h3>Email</h3>
+              <p>info@upstatepinoy.com</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">📍</div>
+            <div class="info-content">
+              <h3>Location</h3>
+              <p>Upstate New York</p>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <div class="info-icon">🕑</div>
+            <div class="info-content">
+              <h3>Response Time</h3>
+              <p>Within 24-48 hours</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="social-links">
+          <h3>Follow Us</h3>
+          <div class="social-buttons">
+            <a href="#" class="social-btn facebook" aria-label="Facebook">
+              <span class="social-icon">f</span>
+            </a>
+            <a href="#" class="social-btn instagram" aria-label="Instagram">
+              <span class="social-icon">📷</span>
+            </a>
+            <a href="#" class="social-btn twitter" aria-label="Twitter">
+              <span class="social-icon">🐦</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form-container">
+        <h2>Send Us a Message</h2>
+        <form class="contact-form">
+          <div class="form-group">
+            <label for="name">Your Name *</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required
+              placeholder="Juan Dela Cruz"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required
+              placeholder="juan@example.com"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject *</label>
+            <select id="subject" name="subject" required>
+              <option value="">Select a topic...</option>
+              <option value="event">Event Submission</option>
+              <option value="vendor">Business Listing</option>
+              <option value="blog">Blog Post Submission</option>
+              <option value="general">General Inquiry</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows="6" 
+              required
+              placeholder="Tell us what's on your mind..."
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="community-info">
+    <div class="info-content">
+      <h2>Join Our Community</h2>
+      <p>Stay connected with the latest events, stories, and updates from the Filipino community in Upstate New York.</p>
+      <div class="quick-links">
+        <a routerLink="/events" class="quick-link">
+          <span class="link-icon">🎉</span>
+          <span>View Events</span>
+        </a>
+        <a routerLink="/vendors" class="quick-link">
+          <span class="link-icon">🏪</span>
+          <span>Find Vendors</span>
+        </a>
+        <a routerLink="/blog" class="quick-link">
+          <span class="link-icon">📝</span>
+          <span>Read Blog</span>
+        </a>
+      </div>
+    </div>
+  </section>
 </div>
