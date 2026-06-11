@@ -15,144 +15,70 @@
   </section>
 
   <section class="vendors-content">
-    <div class="vendors-grid">
-      <article class="vendor-card">
-        <div class="vendor-icon">🍜</div>
-        <div class="vendor-info">
-          <h3>Manila Kitchen</h3>
-          <span class="vendor-category">Restaurant</span>
-          <p class="vendor-description">Authentic Filipino cuisine featuring adobo, sinigang, and other traditional dishes.</p>
-          <div class="vendor-details">
-            <div class="detail-item">
-              <span class="detail-icon">📍</span>
-              <span>Albany, NY</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">📞</span>
-              <span>(518) 555-0123</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">🌐</span>
-              <a href="#" target="_blank">Visit Website</a>
-            </div>
-          </div>
-        </div>
-      </article>
+    @if (loading()) {
+      <div class="vendors-loading">
+        <div class="loading-spinner"></div>
+        <p>Loading vendors...</p>
+      </div>
+    }
 
-      <article class="vendor-card">
-        <div class="vendor-icon">🛒</div>
-        <div class="vendor-info">
-          <h3>Asian Market Express</h3>
-          <span class="vendor-category">Grocery Store</span>
-          <p class="vendor-description">One-stop shop for Filipino groceries, ingredients, and specialty items.</p>
-          <div class="vendor-details">
-            <div class="detail-item">
-              <span class="detail-icon">📍</span>
-              <span>Syracuse, NY</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">📞</span>
-              <span>(315) 555-0456</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">🌐</span>
-              <a href="#" target="_blank">Visit Website</a>
-            </div>
-          </div>
-        </div>
-      </article>
+    @if (error()) {
+      <div class="vendors-error">
+        <p>{{ error() }}</p>
+      </div>
+    }
 
-      <article class="vendor-card">
-        <div class="vendor-icon">🍰</div>
-        <div class="vendor-info">
-          <h3>Pinoy Sweets Bakery</h3>
-          <span class="vendor-category">Restaurant</span>
-          <p class="vendor-description">Traditional Filipino desserts and baked goods, including ube cake and pandesal.</p>
-          <div class="vendor-details">
-            <div class="detail-item">
-              <span class="detail-icon">📍</span>
-              <span>Rochester, NY</span>
+    @if (!loading() && !error()) {
+      <div class="vendors-grid">
+        @for (vendor of vendors(); track vendor.id) {
+          <article class="vendor-card">
+            <div class="vendor-icon">{{ vendor.icon || '🏪' }}</div>
+            <div class="vendor-info">
+              <h3>{{ vendor.name }}</h3>
+              <span class="vendor-category">{{ vendor.category }}</span>
+              <p class="vendor-description">{{ vendor.description }}</p>
+              <div class="vendor-details">
+                <div class="detail-item">
+                  <span class="detail-icon">📍</span>
+                  <span>{{ vendor.location }}</span>
+                </div>
+                @if (vendor.phone) {
+                  <div class="detail-item">
+                    <span class="detail-icon">📞</span>
+                    <span>{{ vendor.phone }}</span>
+                  </div>
+                }
+                @if (vendor.email) {
+                  <div class="detail-item">
+                    <span class="detail-icon">📧</span>
+                    <span>{{ vendor.email }}</span>
+                  </div>
+                }
+                @if (vendor.website) {
+                  <div class="detail-item">
+                    <span class="detail-icon">🌐</span>
+                    <a [href]="vendor.website" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                  </div>
+                }
+              </div>
             </div>
-            <div class="detail-item">
-              <span class="detail-icon">📞</span>
-              <span>(585) 555-0789</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">🌐</span>
-              <a href="#" target="_blank">Visit Website</a>
-            </div>
+          </article>
+        } @empty {
+          <div class="no-vendors">
+            <p>No vendors available at the moment. Check back soon!</p>
           </div>
-        </div>
-      </article>
+        }
+      </div>
+    }
+  </section>
 
-      <article class="vendor-card">
-        <div class="vendor-icon">💇</div>
-        <div class="vendor-info">
-          <h3>Tropical Beauty Salon</h3>
-          <span class="vendor-category">Services</span>
-          <p class="vendor-description">Professional hair and beauty services with a Filipino touch.</p>
-          <div class="vendor-details">
-            <div class="detail-item">
-              <span class="detail-icon">📍</span>
-              <span>Buffalo, NY</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">📞</span>
-              <span>(716) 555-0234</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">🌐</span>
-              <a href="#" target="_blank">Visit Website</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="vendor-card">
-        <div class="vendor-icon">📦</div>
-        <div class="vendor-info">
-          <h3>FilipinBox Delivery</h3>
-          <span class="vendor-category">Online</span>
-          <p class="vendor-description">Online delivery service for Filipino food and products across Upstate NY.</p>
-          <div class="vendor-details">
-            <div class="detail-item">
-              <span class="detail-icon">📍</span>
-              <span>Serving All of Upstate NY</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">📧</span>
-              <span>info@filipinbox.com</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">🌐</span>
-              <a href="#" target="_blank">Visit Website</a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="vendor-card">
-        <div class="vendor-icon">🏠</div>
-        <div class="vendor-info">
-          <h3>Island Real Estate Services</h3>
-          <span class="vendor-category">Services</span>
-          <p class="vendor-description">Real estate services with bilingual support in English and Tagalog.</p>
-          <div class="vendor-details">
-            <div class="detail-item">
-              <span class="detail-icon">📍</span>
-              <span>Albany, NY</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">📞</span>
-              <span>(518) 555-0567</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-icon">🌐</span>
-              <a href="#" target="_blank">Visit Website</a>
-            </div>
-          </div>
-        </div>
-      </article>
+  <section class="vendors-disclaimer">
+    <div class="disclaimer-content">
+      <h2>⚠️ DISCLAIMER</h2>
+      <p>This website serves solely as a platform to connect buyers and independent food vendors. We do not prepare, inspect, certify, endorse, or sell any food products listed on this website.</p>
+      <p>Vendors are solely responsible for ensuring compliance with all applicable federal, state, county, and local laws, regulations, permits, licenses, food safety requirements, and health department requirements.</p>
+      <p>Buyers acknowledge that transactions are conducted directly with the vendor. The website owner shall not be liable for any food quality issues, foodborne illnesses, allergic reactions, licensing violations, regulatory violations, damages, losses, or disputes arising from products or services offered by vendors.</p>
+      <p>By using this website, users agree that the website owner is not responsible for verifying the licensing status or regulatory compliance of any vendor unless explicitly stated otherwise.</p>
     </div>
   </section>
 
