@@ -14,9 +14,9 @@ export class EventsService {
 
   getEvents(): Observable<Event[]> {
     const eventsCollection = collection(this.db, 'events');
-    
+
     return new Observable<any[]>(subscriber => {
-      const unsubscribe = onSnapshot(eventsCollection, 
+      const unsubscribe = onSnapshot(eventsCollection,
         (snapshot) => {
           const events = snapshot.docs.map(doc => ({
             id: doc.id,
@@ -32,13 +32,23 @@ export class EventsService {
     }).pipe(
       map((events: any[]) => {
         return events.map(event => {
-          const eventDate = event.date?.toDate ? event.date.toDate() : new Date(event.date);
+          const eventDate = event.date?.toDate
+            ? event.date.toDate()
+            : new Date(event.date);
+
+          const expirationDate = event.expirationDate?.toDate
+            ? event.expirationDate.toDate()
+            : event.expirationDate
+              ? new Date(event.expirationDate)
+              : null;
+
           const month = eventDate.toLocaleString('en-US', { month: 'short' }).toUpperCase();
           const day = eventDate.getDate().toString();
-          
+
           return {
             ...event,
             date: eventDate,
+            expirationDate: expirationDate,
             month,
             day
           } as Event;

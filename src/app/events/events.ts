@@ -18,7 +18,12 @@ export class EventsComponent implements OnInit {
   ngOnInit() {
     this.eventsService.getEvents().subscribe({
       next: (events) => {
-        this.events.set(events.sort((a, b) => a.date.getTime() - b.date.getTime()));
+        var eventsData = events.filter((event) => {
+          const now = new Date();
+          const eventExpirationDate = event.expirationDate ? new Date(event.expirationDate) : null;
+          return eventExpirationDate ? eventExpirationDate >= now : true;
+        });
+        this.events.set(eventsData.sort((a, b) => a.date.getTime() - b.date.getTime()));
         this.loading.set(false);
       },
       error: (err) => {
