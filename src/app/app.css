@@ -1,0 +1,25 @@
+.fourth-of-july {
+  background: linear-gradient(135deg, #e8213d 0%, #ffffff 50%, #001f7f 100%);
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 40px 20px;
+  text-align: center;
+  font-size: 48px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  border-top: 5px solid #e8213d;
+  border-bottom: 5px solid #001f7f;
+  animation: celebrate 1s ease-in-out;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(0.95) translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
